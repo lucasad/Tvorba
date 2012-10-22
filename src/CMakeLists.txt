@@ -4,10 +4,11 @@ configure_file (
   )
 
 SET(tvorba_SRCS
+    commander.c
     main.cpp
     commander.c)
 
-INCLUDE_DIRECTORIES("${PROJECT_BINARY_DIR}" "${PROJECT_BINARY_DIR}/include" )
+INCLUDE_DIRECTORIES("${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/include" )
 
 ADD_EXECUTABLE(tvorba ${tvorba_SRCS})
 

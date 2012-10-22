@@ -1,0 +1,4 @@
+#define VERSION_MAJOR @tvorba_VERSION_MAJOR@
+#define VERSION_MINOR @tvorba_VERSION_MINOR@
+#define VERSION_REVISION @tvorba_VERSION_REVISION@
+#define VERSION "@tvorba_VERSION@"
