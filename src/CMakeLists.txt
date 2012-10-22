@@ -8,6 +8,9 @@ SET(tvorba_SRCS
     main.cpp
     commander.c)
 
+SET_SOURCE_FILES_PROPERTIES(commander.c
+    PROPERTIES COMPILE_FLAGS -std=c99)
+
 INCLUDE_DIRECTORIES("${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/include" )
 
 ADD_EXECUTABLE(tvorba ${tvorba_SRCS})

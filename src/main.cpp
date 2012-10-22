@@ -27,7 +27,7 @@ int main(int argc, char** argv)
   command_option(&cmd, "-b", "--bind <ip>", "Binds to specified ip (implies --bootstrap)", bind_ip);
   command_parse(&cmd, argc, argv);
   for (int i = 0; i < cmd.argc; ++i) {
-    sscanf(argv[i], "%s:%d", &bootstrap_host, &bootstrap_port);
+    sscanf(argv[i], "%s:%d", bootstrap_host, &bootstrap_port);
     fprintf(stderr, "Adding bootstrap node with hostname: %s, port %d", bootstrap_host, bootstrap_port);
   }
   return 1;
