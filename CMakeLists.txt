@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 project(tvorba)
 
-set(tvorba_VERSION_MAJOR 1)
-set(tvorba_VERSION_MINOR 0)
+SET(tvorba_VERSION_MAJOR 1)
+SET(tvorba_VERSION_MINOR 0)
+SET(tvorba_VERSION_REVISION 0)
+SET(tvorba_VERSION "${tvorba_VERSION_MAJOR}.${tvorba_VERSION_MINOR}.${tvorba_VERSION_REVISION}")
 
-configure_file
-file(GLOB SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*.cpp)
-add_executable(tvorba ${SOURCES})
+add_subdirectory(src)
