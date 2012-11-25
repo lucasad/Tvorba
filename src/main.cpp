@@ -1,34 +1,39 @@
+#define DEBUG
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <chimera.h>
+#include <unistd.h>
+#include <argp.h>
 
 #include <config.h>
-#include "commander.h"
+#include "dht.h"
+#include "args.h"
 
-static void bind_ip(command_t *self)
-{
-  fprintf(stderr, "Binding to ip %s", "");
-};
-
-static void bootstrap_chimera(command_t *self)
-{
-  fputs("Starting new network", stderr);
-};
+struct arguments_t settings;
 
 int main(int argc, char** argv)
 {
   char* bootstrap_host;
   int bootstrap_port;
 
-  command_t cmd;
-  command_init(&cmd, argv[0], VERSION);
-  command_option(&cmd, "-j", "--bootstrap", "Bootstrap network/Start server", bootstrap_chimera);
-  command_option(&cmd, "-b", "--bind <ip>", "Binds to specified ip (implies --bootstrap)", bind_ip);
-  command_parse(&cmd, argc, argv);
-  for (int i = 0; i < cmd.argc; ++i) {
-    sscanf(argv[i], "%s:%d", bootstrap_host, &bootstrap_port);
-    fprintf(stderr, "Adding bootstrap node with hostname: %s, port %d", bootstrap_host, bootstrap_port);
-  }
+  /* Default values. */
+  settings.bootstrap = 0;
+  settings.debug = 0;
+  settings.bind = NULL;
+
+  /* Parse our arguments; every option seen by parse_opt will
+     be reflected in arguments. */
+  argp_parse (&argp, argc, argv, 0, 0, &settings);
+
+#ifdef DEBUG
+  fprintf (stderr, "binding to = %s\n"
+   "bootstrap = %s\n debug = %s\n",
+   settings.bind,
+   settings.bootstrap ? "yes" : "no",
+   settings.debug ? "yes" : "no");
+#endif
+
+  DHT *network = new DHT(settings);
+
+
   return 1;
 }

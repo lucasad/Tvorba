@@ -4,12 +4,9 @@ configure_file (
   )
 
 SET(tvorba_SRCS
-    commander.c
-    main.cpp
-    commander.c)
-
-SET_SOURCE_FILES_PROPERTIES(commander.c
-    PROPERTIES COMPILE_FLAGS -std=c99)
+    node.cpp
+    dht.cpp
+    main.cpp)
 
 INCLUDE_DIRECTORIES("${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/include" )
 
